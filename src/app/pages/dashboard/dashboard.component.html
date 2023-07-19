@@ -1,0 +1,103 @@
+<h1>Inicio</h1>
+<div class="container">
+    <form>
+        <div class="cards">
+            <div class="tarjeta">
+              <div class="misaldo">Mi Saldo</div>
+              <div class="dinero">{{ monto }}</div>
+              <img src="../../assets/mastercard.jpg" alt="user" class="logo">
+              <div class="numero">**** **** **** 1234</div>
+              <div class="fecha-vencimiento">valida hasta</div>
+              <div class="fecha">12/23</div>
+              <div class="curve-line"></div>
+            </div>
+        
+            <div class="ingresoTarjeta">
+              <div class="head-menu-item">
+                <button class="head-menu-item-btn ripple">
+                  <i class="far fa-wallet menu-icon"></i>
+                </button>
+                <div class="ingreso">Ingreso</div>
+              </div>
+              <div class="ingresoTar">$1000</div>
+            </div>
+        
+            <div class="EgresoTarjeta">
+              <div class="head-menu-item">
+                <button class="head-menu-item-btn ripple">
+                  <i class="far fa-wallet menu-icon"></i>
+                </button>
+                <div class="Engreso">Egreso</div>
+              </div>
+              <div class="EgresoTar">$1000</div>
+            </div>
+          </div>
+    </form>
+  <div></div>
+  <div class="container-card">
+    <form>
+        <div class="conteiner-balance"></div>
+            <div class="Balance">
+                <h1>Balance</h1>
+                <div id="chart" *ngIf="chartOptions" class="chart-wrapper">
+                    <apx-chart
+                        [series]="chartOptions.series"
+                        [chart]="chartOptions.chart"
+                        [dataLabels]="chartOptions.dataLabels"
+                        [plotOptions]="chartOptions.plotOptions"
+                        [yaxis]="chartOptions.yaxis"
+                        [legend]="chartOptions.legend"
+                        [fill]="chartOptions.fill"
+                        [stroke]="chartOptions.stroke"
+                        [tooltip]="chartOptions.tooltip"
+                        [xaxis]="chartOptions.xaxis"
+                    ></apx-chart>
+                    
+              </div>
+        </div>
+    </form>
+    <div></div>
+    <div class="transaction-title">
+        <h1>Últimas Transacciones</h1>
+        <h1>hola mundo como estas?</h1>
+    </div> 
+  </div>
+</div>
+<ul class="horizontal-list">
+    <li><h3>Monto</h3></li>
+    <li><h3>Cuotas</h3></li>
+    <li><h3>Fecha de Emisión</h3></li>
+    <li><h3>Mensual</h3></li>
+    <li><h3>Tasa de Interés</h3></li>
+  </ul>
+  <form>
+    <div class="card-table">
+      <tbody>
+        <tr *ngFor="let item of datosTabla; let i = index" class="table">
+          <td>
+            <div class="checkbox-container">
+              <input type="checkbox" id="styled-checkbox{{i}}" class="styled-checkbox" [checked]="opcionSeleccionada === i" (change)="seleccionarOpcion(i)">
+              <label for="styled-checkbox{{i}}"></label>
+            </div>
+          </td>
+          <td><h3>{{ item.monto }}</h3></td>
+          <td><h3>{{ item.cuotas }}</h3></td>
+          <td><h3>{{ item.fechaEmision }}</h3></td>
+          <td><h3>{{ item.mensual }}</h3></td>
+          <td><h3>{{ item.tasaInteres }}</h3></td>
+          <td>
+            <div class="botones">
+              <button [disabled]="opcionSeleccionada !== null && i !== opcionSeleccionada" (click)="pagar()">Pagar</button>
+              <button [disabled]="opcionSeleccionada !== null && i !== opcionSeleccionada" (click)="cancelar()">Cancelar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </div>
+  </form>
+  
+  
+  
+  
+  
+
