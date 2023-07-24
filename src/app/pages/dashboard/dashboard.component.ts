@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApexAxisChartSeries, ApexChart, ApexDataLabels, ApexPlotOptions, ApexYAxis, ApexXAxis, ApexFill, ApexTooltip, ApexStroke, ApexLegend } from 'ng-apexcharts';
-
+import { TarjetaServiceComponent } from 'src/app/tarjeta-service/tarjeta-service.component';
+import {MatDialog} from '@angular/material/dialog';
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -13,13 +14,20 @@ export type ChartOptions = {
   stroke: ApexStroke;
   legend: ApexLegend;
 };
-
+export interface SideNavToggle {
+    screenWidth:number;
+    collapsed: boolean;
+  }
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  @Input() collapsed = false;
+  @Input() screenWidth = 0;
+  title = 'responsive-mobile-app';
+  inSideNavCollapsed = false;
   chartOptions: ChartOptions | undefined;
   monto: number | undefined;
   dataService: any;
@@ -32,12 +40,39 @@ export class DashboardComponent implements OnInit {
     { monto: 2000, cuotas: 12, fechaEmision:'2023-07-02', mensual: 150, tasaInteres: 4 },
     { monto: 3000, cuotas: 24, fechaEmision:'2023-07-03', mensual: 125, tasaInteres: 3 },
   ];
+  
+  imagenesAleatorias = ["https://mdbootstrap.com/img/new/avatars/8.jpg",
+                        "https://mdbootstrap.com/img/new/avatars/6.jpg",
+                        "https://mdbootstrap.com/img/new/avatars/7.jpg",
+                      ]
+  nombresAleatorios = ['John Doe', 'Jane Smith', 'Bob Johnson', 'Mary Brown', 'Michael Lee',];
+  amount = ['8000', '2000', '1000', '5000', '7000',];
+  fechas: any [] = [
+    {fechasTransacciones: '25 Ene,2023'},
+    {fechasTransacciones: '01 Feb,2023'},
+    {fechasTransacciones: '14 Feb,2023'},
+    {fechasTransacciones: '28 Mar,2023'},
+    {fechasTransacciones: '18 Jun,2023'},
+  ]
 
   opcionSeleccionada: number | null = null;
+  
+  constructor( private matDialog:MatDialog) {}
+  ingreso(): void {
+    const dialogRef = this.matDialog.open(TarjetaServiceComponent,{
+      width:'350px',
+      data: this.monto
+    });
 
-  constructor() {}
+    dialogRef.afterClosed().subscribe((montoIngresado: number | undefined) => {
+      if (montoIngresado !== undefined ) {
+        this.monto = (this.monto || 0) + montoIngresado;
+      }
+    });
+  } 
 
   ngOnInit() {
+    this.screenWidth = window.innerWidth;
     this.chartOptions = {
       series: [
         {
@@ -130,4 +165,9 @@ export class DashboardComponent implements OnInit {
   seleccionarOpcion(index: number): void {
     this.opcionSeleccionada = index;
   }
+  onToggleSideNav(data: SideNavToggle): void {
+      this.screenWidth = data.screenWidth;
+      this.inSideNavCollapsed = data.collapsed;
+    }
+  
 }

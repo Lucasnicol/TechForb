@@ -36,7 +36,7 @@ export class RegisterComponent {
     this.http.post("http://localhost:3000/user/create", bodyData).subscribe((resultData: any) => {
       console.log(resultData);
       alert("Usuario registrado correctamente");
-      this.router.navigate(['/user/login']);
+      this.router.navigate(['/login']);
     });
   }
 }

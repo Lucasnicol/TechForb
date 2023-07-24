@@ -4,7 +4,6 @@ import { MobileViewComponent } from './mobile-view/mobile-view.component';
 import { DesktopViewComponent } from './desktop-view/desktop-view.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
-import { ComponentPortal } from '@angular/cdk/portal';
 import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
@@ -22,7 +21,7 @@ const routes: Routes = [
   { path: 'desktop', component: DesktopViewComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '**', redirectTo: 'login' } 
+
 ];
 
 @NgModule({

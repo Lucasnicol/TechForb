@@ -1,6 +1,12 @@
 
-.h1 {
-    color: #495057;
+.main-container{
+  margin-left: 150px;
+  color: #495057;
+  transition: margin-left 0.3s ease;
+  z-index: 1;
+}
+.main-container.expanded {
+  margin-left: 350px;
 }
 .container {
   width: calc(280px - 5rem);
@@ -9,8 +15,10 @@
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
-
-
+  margin-left: 150px;
+  margin-top: 20px;
+  transition: margin-left 0.3s ease;
+  z-index: 1;
 }
 
 .tarjeta {
@@ -70,6 +78,12 @@
     color: white;
     padding: 20px;
     border-radius: 10px;
+
+}
+.col{
+  margin-left: -40px;
+  margin-top: -120px;
+  
 }
   .EgresoTarjeta{
     width: calc(100% - 5rem);
@@ -91,6 +105,7 @@
   flex-direction: row;
   align-items: center;
   margin-left: 1.25rem;
+  
 
   .head-menu-item {
     .head-menu-item-btn {
@@ -177,13 +192,34 @@
   display: flex;
   justify-content: space-between;
 
-  .transaction-title {
-    margin-top: -452px;
-    margin-left: 700px;
-  
-  }
+}
+.transaction-title {
+  margin-left: -190px;
 
 }
+.avatar-container {
+  margin-bottom: 20px;
+}
+.imagen {
+  border-radius: 20px;
+  
+}
+.text-avatar {
+  margin-left: 50px;
+  margin-top: -40px;
+  padding-right: 60px;
+}
+.amount {
+  margin-left: 140px;
+  margin-top: -35px;
+  
+}
+.fechas-transaccion{
+  margin-top: 10px;
+  margin-left: 13px;
+}
+
+
 .chart-wrapper {
   margin-left: -1000px;
   margin-right: 100px;
@@ -197,24 +233,27 @@
   flex-direction: row;
   list-style-type: none;
   margin-top: 600px;
-  gap: 80px;
-  margin-left: 60px;
+  gap: 60px;
+  margin-left: 250px;
 }
 
 
 .horizontal-list li {
-  margin-right: 40px;
   display: flex;
+  margin-left:30px;
+  gap: 70px;
 }
 
 .card-table {
   background-color: #fff;
   padding: 5px;
+  margin-left: 70px;
 
   .table {
     display: flex;
     justify-content: space-between;
     gap: 130px;
+    margin-left: 60px;
   }
   
   tr {
@@ -280,3 +319,4 @@
 .styled-checkbox:checked + label:before {
   opacity: 1;
 }
+
