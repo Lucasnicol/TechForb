@@ -18,18 +18,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-
-
-
-
-
 import { OverlayModule} from '@angular/cdk/overlay'
 import { CdkMenuModule} from '@angular/cdk/menu';
 import { RegisterComponent } from './pages/register/register.component'
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -56,7 +50,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     NgApexchartsModule,
-    BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
